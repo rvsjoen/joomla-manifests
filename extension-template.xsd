@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.example.org/extension-template" 
+	xmlns:tns="http://www.example.org/extension-template" 
+	elementFormDefault="qualified">
+	<element name="extension" type="tns:ExtensionType"></element>
+    <complexType name="ExtensionType">
+    	<all>
+    		<element name="name" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="creationDate" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="author" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="authorEmail" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="authorUrl" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="copyright" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="license" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="version" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="description" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="files" type="tns:FilesType" maxOccurs="1" minOccurs="0"></element>
+    	</all>
+    	<attribute name="type" type="string" use="required" fixed="template"></attribute>
+    	<attribute name="version" type="string"></attribute>
+    	<attribute name="method" default="install">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="install"></enumeration>
+    				<enumeration value="upgrade"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    	<attribute name="client" default="site">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="site"></enumeration>
+    				<enumeration value="administrator"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    </complexType>
+    <complexType name="FilesType">
+    	<sequence>
+    		<element name="folder" type="tns:FolderType" maxOccurs="unbounded" minOccurs="0" ></element>
+    		<element name="filename" type="tns:FilenameType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="folder" type="string"></attribute>
+    </complexType>
+	<simpleType name="FilenameType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+    <simpleType name="FolderType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+</schema>

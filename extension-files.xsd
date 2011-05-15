@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/extension-files"
+	xmlns:tns="http://www.example.org/extension-files" elementFormDefault="qualified">
+	<element name="extension" type="tns:ExtensionType"></element>
+	<complexType name="ExtensionType">
+		<all>
+			<element name="name" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="creationDate" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="author" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="authorEmail" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="authorUrl" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="copyright" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="license" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="version" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="description" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="fileset" type="tns:FilesetType" maxOccurs="1" minOccurs="0"></element>
+			<element name="updateservers" type="tns:UpdateServersType" maxOccurs="1" minOccurs="0"></element>
+		</all>
+		<attribute name="type" type="string" use="required" fixed="template"></attribute>
+		<attribute name="version" type="string"></attribute>
+		<attribute name="method" default="install">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="install"></enumeration>
+					<enumeration value="upgrade"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="client" default="site">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="site"></enumeration>
+					<enumeration value="administrator"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<complexType name="FilesetType">
+		<sequence>
+			<element name="files" type="tns:FilesType" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<complexType name="FilesType">
+		<sequence>
+			<element name="folder" type="tns:FolderType" maxOccurs="unbounded" minOccurs="0"></element>
+			<element name="filename" type="tns:FilenameType" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+		<attribute name="folder" type="string"></attribute>
+		<attribute name="target" type="string"></attribute>
+	</complexType>
+	<simpleType name="FilenameType">
+		<restriction base="string"></restriction>
+	</simpleType>
+	<simpleType name="FolderType">
+		<restriction base="string"></restriction>
+	</simpleType>
+	<complexType name="UpdateServersType">
+		<sequence>
+			<element name="server" type="tns:ServerType" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<complexType name="ServerType">
+		<attribute name="type" type="string" use="required"></attribute>
+		<attribute name="priority" type="integer" use="optional"></attribute>
+		<attribute name="name" type="string" use="optional"></attribute>
+	</complexType>
+</schema>

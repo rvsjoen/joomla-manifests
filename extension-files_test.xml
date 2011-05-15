@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension client="site" method="install" type="template" version="" xmlns="http://www.example.org/extension-files"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/extension-files extension-files.xsd ">
+	<name>COM_HELLWORLD</name>
+	<creationDate>July 2010</creationDate>
+	<author>John Doe</author>
+	<authorEmail>john@doe.com</authorEmail>
+	<authorUrl>http://www.john.doe.com</authorUrl>
+	<copyright>John Doe</copyright>
+	<license>GNU/GPL</license>
+	<description><![CDATA[TPL_HELLOWORLD_XML_DESCRIPTION]]></description>
+	<version>1.0</version>
+	<fileset>
+		<files folder="includes" target="includes">
+			<filename>alpha.php</filename>
+			<filename>sample.php</filename>
+		</files>
+		<files folder="language/en-GB" target="language/en-GB">
+			<filename>test.ini</filename>
+		</files>
+		<files folder="modules" target="modules">
+			<folder>mod_new_module</folder>
+			<filename>mod_new_module/sample-newmod.php</filename>
+		</files>
+		<files folder="otherfiles" target="differentfolder">
+			<filename>other_files.php</filename>
+		</files>
+	</fileset>
+	<updateservers>
+		<server type="extension">http://jsitepoint.com/update/files/files_test1.xml</server>
+	</updateservers>
+</extension>

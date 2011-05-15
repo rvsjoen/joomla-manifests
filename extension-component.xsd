@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.joomla.org" 
+	elementFormDefault="qualified" 
+	xmlns:Q1="http://www.joomla.org">
+    <element name="extension" type="Q1:ExtensionType"></element>
+    <complexType name="ExtensionType">
+    	<all>
+    		<element name="name" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="creationDate" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="author" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="authorEmail" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="authorUrl" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="copyright" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="license" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="version" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="description" type="string" maxOccurs="1" minOccurs="0"></element>
+            <element name="scriptfile" type="Q1:FilenameType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="media" type="Q1:MediaType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="install" type="Q1:MaintenanceType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="update" type="Q1:UpdateType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="uninstall" type="Q1:MaintenanceType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="files" type="Q1:FilesType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="administrator" type="Q1:AdminType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="updateservers" type="Q1:UpdateServersType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="tables" type="Q1:TablesType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="dependencies" type="Q1:DependenciesType" maxOccurs="1" minOccurs="0"></element>
+    	</all>
+    	<attribute name="type" type="string" use="required"></attribute>
+    	<attribute name="version" type="string"></attribute>
+    	<attribute name="method" default="install">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="install"></enumeration>
+    				<enumeration value="upgrade"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    	<attribute name="client" default="site">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="site"></enumeration>
+    				<enumeration value="administrator"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    </complexType>
+    <complexType name="MediaType">
+    	<sequence>
+    		<element name="folder" type="Q1:FolderType" maxOccurs="unbounded" minOccurs="0" ></element>
+    		<element name="filename" type="Q1:FilenameType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="destination" type="string" use="required"></attribute>
+    	<attribute name="folder" type="string"></attribute>
+    </complexType>
+    <simpleType name="FilenameType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+    <simpleType name="FolderType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+    <complexType name="MaintenanceType">
+    	<sequence>
+    		<element name="sql" type="Q1:SQLType" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="SchemaPathType">
+    	<attribute name="type" type="string" use="required"></attribute>
+    </complexType>
+    <complexType name="SchemasType">
+    	<sequence>
+    		<element name="schemapath" type="Q1:SchemaPathType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="UpdateType">
+    	<sequence>
+    		<element name="schemas" type="Q1:SchemasType" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="SQLFileType">
+    	<attribute name="driver" type="string" use="required"></attribute>
+    	<attribute name="folder" type="string"></attribute>
+    </complexType>
+    <complexType name="SQLType">
+    	<sequence>
+    		<element name="file" type="Q1:SQLFileType"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="FilesType">
+    	<sequence>
+    		<element name="folder" type="Q1:FolderType" maxOccurs="unbounded" minOccurs="0" ></element>
+    		<element name="filename" type="Q1:FilenameType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="folder" type="string"></attribute>
+    </complexType>
+    <complexType name="MenuRootType">
+    	<attribute name="img" type="string"></attribute>
+    </complexType>
+    <complexType name="MenuType">
+    	<attribute name="img" type="string"></attribute>
+    	<attribute name="link" type="string"></attribute>
+    	<attribute name="view" type="string"></attribute>
+    	<attribute name="act" type="string"></attribute>
+    	<attribute name="task" type="string"></attribute>
+    	<attribute name="controller" type="string"></attribute>
+    	<attribute name="layout" type="string"></attribute>
+    	<attribute name="sub" type="string"></attribute>
+    </complexType>
+    <complexType name="SubMenuType">
+    	<sequence>
+    		<element name="menu" type="Q1:MenuType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="AdminType">
+    	<all>
+    		<element name="menu" type="Q1:MenuRootType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="submenu" type="Q1:SubMenuType" maxOccurs="1" minOccurs="0"></element>
+    		<element name="files" type="Q1:FilesType" maxOccurs="1" minOccurs="0"></element>
+    	</all>
+    </complexType>
+    <complexType name="UpdateServersType">
+    	<sequence>
+    		<element name="server" type="Q1:ServerType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="ServerType">
+    	<attribute name="type" type="string" use="required"></attribute>
+    	<attribute name="priority" type="integer" use="required"></attribute>
+    	<attribute name="name" type="string" use="required"></attribute>
+    </complexType>
+    <complexType name="TablesType">
+    	<sequence>
+    		<element name="table" type="Q1:TableType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="TableType">
+    	<attribute name="type" type="string"></attribute>
+    </complexType>
+    <complexType name="DependenciesType">
+    	<sequence>
+    		<element name="dependency" type="Q1:DependencyType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="DependencyType">
+    	<attribute name="type" type="string" use="required"></attribute>
+    	<attribute name="name" type="string" use="required"></attribute>
+    	<attribute name="operator" type="string" use="required"></attribute>
+    	<attribute name="version" type="string" use="required"></attribute>
+    </complexType>
+</schema>

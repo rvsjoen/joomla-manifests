@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/extension-package"
+	xmlns:tns="http://www.example.org/extension-package" elementFormDefault="qualified">
+	<element name="extension" type="tns:ExtensionType"></element>
+	<complexType name="ExtensionType">
+		<all>
+			<element name="name" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="packagename" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="version" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="url" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="packager" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="packagerurl" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="description" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="update" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="files" type="tns:FilesType" maxOccurs="1" minOccurs="0"></element>
+		</all>
+	</complexType>
+	<complexType name="FilesType">
+		<sequence>
+			<element name="filename" type="tns:FilenameType" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+		<attribute name="folder" type="string"></attribute>
+	</complexType>
+	<complexType name="FilenameType">
+		<attribute name="type" default="component">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="library"></enumeration>
+					<enumeration value="component"></enumeration>
+					<enumeration value="module"></enumeration>
+					<enumeration value="plugin"></enumeration>
+					<enumeration value="template"></enumeration>
+					<enumeration value="language"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="id" use="required"></attribute>
+		<attribute name="client" default="client" use="optional">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="site"></enumeration>
+					<enumeration value="administrator"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="group" use="optional"></attribute>
+	</complexType>
+</schema>

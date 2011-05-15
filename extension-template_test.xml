@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension 
+	xmlns="http://www.joomla.org" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.joomla.org extension-template.xsd "
+	method="upgrade"
+	client="site"
+	version="1.6"
+	type="template"
+>
+  	<!-- All of these are optional, zero or one instances, with no formatting constraints -->
+	<name>COM_HELLWORLD</name>
+	<creationDate>July 2010</creationDate>
+	<author>John Doe</author>
+	<authorEmail>john@doe.com</authorEmail>
+	<authorUrl>http://www.john.doe.com</authorUrl>
+	<copyright>John Doe</copyright>
+	<license>GNU/GPL</license>
+	<description><![CDATA[TPL_HELLOWORLD_XML_DESCRIPTION]]></description>
+	<version>1.0</version>
+  
+	<files>
+		<folder>css</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+	</files>
+</extension>
