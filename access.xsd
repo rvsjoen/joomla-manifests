@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.joomla.org/access" xmlns:tns="http://www.joomla.org/access"
 	elementFormDefault="qualified">
-
 	<complexType name="AccessType">
 		<sequence>
 			<element name="section" type="tns:SectionType" maxOccurs="unbounded" minOccurs="0"></element>
 		</sequence>
 		<attribute name="component" type="string"></attribute>
 	</complexType>
-
 	<complexType name="ActionType">
 		<attribute name="name" type="string"></attribute>
 		<attribute name="title" type="string"></attribute>
 		<attribute name="description" type="string"></attribute>
 	</complexType>
-
 	<complexType name="SectionType">
 		<sequence>
 			<element name="action" type="tns:ActionType" maxOccurs="unbounded" minOccurs="0"></element>
 		</sequence>
 		<attribute name="name" type="string"></attribute>
 	</complexType>
-
 	<element name="access" type="tns:AccessType"></element>
 </schema>

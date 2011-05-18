@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.joomla.org/config" xmlns:tns="http://www.joomla.org/config"
 	elementFormDefault="qualified">
-
 	<complexType name="FieldType">
 		<attribute name="name" type="string"></attribute>
 		<attribute name="type" type="string"></attribute>
@@ -10,7 +9,6 @@
 		<attribute name="filter" type="string"></attribute>
 		<anyAttribute></anyAttribute>
 	</complexType>
-
 	<complexType name="FieldsetType">
 		<sequence>
 			<element name="field" type="tns:FieldType" maxOccurs="unbounded" minOccurs="0"></element>
@@ -19,8 +17,8 @@
 		<attribute name="label" type="string"></attribute>
 		<attribute name="description" type="string"></attribute>
 	</complexType>
-
-	<complexType name="ConfigType"></complexType>
-
+	<complexType name="ConfigType">
+	
+	</complexType>
 	<element name="config" type="tns:FieldsetType"></element>
 </schema>
